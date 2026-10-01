@@ -23,7 +23,7 @@ body {
 }
 
 header {
-    padding: 22px;
+    padding: 25px 15px;
     text-align: center;
     background: rgba(0,0,0,.55);
 }
@@ -33,7 +33,7 @@ header h1 {
 }
 
 header p {
-    margin-top: 7px;
+    margin-top: 8px;
 }
 
 .container {
@@ -55,9 +55,10 @@ header p {
 }
 
 .announcement {
-    border-left: 4px solid #fff;
+    border-left: 4px solid white;
     padding: 12px;
     margin-top: 10px;
+    background: rgba(255,255,255,.08);
 }
 
 button {
@@ -66,154 +67,10 @@ button {
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
+    margin-top: 10px;
 }
 
-.console {
-    display: none;
-}
-
-input, textarea {
+input,
+textarea {
     width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 7px;
-    border: none;
-}
-
-footer {
-    text-align: center;
-    padding: 25px;
-    background: rgba(0,0,0,.6);
-}
-</style>
-</head>
-
-<body>
-
-<header>
-    <h1>Smart Coinlet Firm</h1>
-    <p>Smart ideas. Smart opportunities.</p>
-</header>
-
-<div class="container">
-
-    <div class="card">
-        <h2>Welcome to SCF</h2>
-        <p>
-            Welcome to Smart Coinlet Firm. This platform provides information,
-            updates and announcements from SCF.
-        </p>
-    </div>
-
-    <div class="card">
-        <h2>Announcements</h2>
-        <div id="announcements">
-            <div class="announcement">
-                No new announcements at the moment.
-            </div>
-        </div>
-    </div>
-
-    <!-- SCF CONSOLE -->
-    <div id="console" class="card console">
-        <h2>SCF Console</h2>
-
-        <h3>Add Announcement</h3>
-        <textarea id="announcementText"
-        placeholder="Write your announcement here..."></textarea>
-
-        <button onclick="addAnnouncement()">Publish Announcement</button>
-
-        <br><br>
-
-        <h3>Change Background Image</h3>
-        <input id="backgroundUrl"
-        placeholder="Paste image URL here">
-
-        <button onclick="changeBackground()">Change Background</button>
-
-        <br><br>
-
-        <button onclick="logout()">Exit SCF Console</button>
-    </div>
-
-</div>
-
-<footer>
-    <p>© 2026 Smart Coinlet Firm</p>
-</footer>
-
-<script>
-
-function loadAnnouncements() {
-    const saved = localStorage.getItem("scfAnnouncements");
-
-    if (saved) {
-        document.getElementById("announcements").innerHTML = saved;
-    }
-}
-
-function addAnnouncement() {
-    const text = document.getElementById("announcementText").value.trim();
-
-    if (text === "") {
-        alert("Please write an announcement first.");
-        return;
-    }
-
-    const box = document.createElement("div");
-    box.className = "announcement";
-    box.textContent = text;
-
-    document.getElementById("announcements").prepend(box);
-
-    localStorage.setItem(
-        "scfAnnouncements",
-        document.getElementById("announcements").innerHTML
-    );
-
-    document.getElementById("announcementText").value = "";
-
-    alert("Announcement published.");
-}
-
-function changeBackground() {
-    const url = document.getElementById("backgroundUrl").value.trim();
-
-    if (url === "") {
-        alert("Please enter an image URL.");
-        return;
-    }
-
-    document.body.style.background =
-        'linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)), url("' +
-        url +
-        '") center/cover fixed';
-
-    localStorage.setItem("scfBackground", url);
-
-    alert("Background changed.");
-}
-
-function loadBackground() {
-    const saved = localStorage.getItem("scfBackground");
-
-    if (saved) {
-        document.body.style.background =
-            'linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)), url("' +
-            saved +
-            '") center/cover fixed';
-    }
-}
-
-function logout() {
-    document.getElementById("console").style.display = "none";
-}
-
-loadAnnouncements();
-loadBackground();
-
-</script>
-
-</body>
-</html>
+    padding: 12px
