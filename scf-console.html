@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCF Console</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      min-height: 100vh;
+    }
+
+    .console {
+      max-width: 700px;
+      margin: auto;
+      padding: 25px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: #1d1d1d;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background: #292929;
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 8px;
+      background: #ffffff;
+      color: #111;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+
+    .status {
+      text-align: center;
+      margin-top: 15px;
+      color: #8cff8c;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="console">
+
+    <h1>SCF Console</h1>
+    <p class="subtitle">Private Management Panel</p>
+
+    <div class="card">
+      <h2>Background Image</h2>
+
+      <label for="background">
+        Background Image URL
+      </label>
+
+      <input
+        type="url"
+        id="background"
+        placeholder="Paste image URL here"
+      >
+
+      <button onclick="changeBackground()">
+        Change Background
+      </button>
+    </div>
+
+    <div class="card">
+      <h2>Announcement</h2>
+
+      <label for="announcement">
+        Announcement Message
+      </label>
+
+      <textarea
+        id="announcement"
+        placeholder="Write your announcement here..."
+      ></textarea>
+
+      <button onclick="saveAnnouncement()">
+        Save Announcement
+      </button>
+
+      <div id="status" class="status"></div>
+    </div>
+
+  </div>
+
+  <script>
+    function changeBackground() {
+      const image = document.getElementById("background").value;
+
+      if (image.trim() === "") {
+        alert("Please enter an image URL.");
+        return;
+      }
+
+      localStorage.setItem("scfBackground", image);
+
+      document.body.style.backgroundImage = `url("${image}")`;
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundPosition = "center";
+
+      document.getElementById("status").textContent =
+        "Background saved.";
+    }
+
+    function saveAnnouncement() {
+      const message =
+        document.getElementById("announcement").value;
+
+      if (message.trim() === "") {
+        alert("Please write an announcement.");
+        return;
+      }
+
+      localStorage.setItem("scfAnnouncement", message);
+
+      document.getElementById("status").textContent =
+        "Announcement saved.";
+    }
+
+    window.onload = function () {
+      const savedBackground =
+        localStorage.getItem("scfBackground");
+
+      if (savedBackground) {
+        document.body.style.backgroundImage =
+          `url("${savedBackground}")`;
+
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center";
+      }
+
+      const savedAnnouncement =
+        localStorage.getItem("scfAnnouncement");
+
+      if (savedAnnouncement) {
+        document.getElementById("announcement").value =
+          savedAnnouncement;
+      }
+    };
+  </script>
+
+</body>
+  </html>
