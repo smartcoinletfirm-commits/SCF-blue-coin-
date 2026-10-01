@@ -74,6 +74,42 @@
         </div>
 
     </div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
+    const settings =
+        JSON.parse(
+            localStorage.getItem("scfSettings")
+        ) || {};
+
+    const announcementText =
+        document.getElementById("announcementText");
+
+    const announcementBox =
+        document.getElementById("announcementBox");
+
+    if (settings.announcementVisible === false) {
+
+        announcementBox.style.display = "none";
+
+    } else if (settings.announcement) {
+
+        announcementText.textContent =
+            settings.announcement;
+    }
+
+
+    if (settings.backgroundImage) {
+
+        document.body.style.backgroundImage =
+            `url("${settings.backgroundImage}")`;
+
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center";
+        document.body.style.backgroundAttachment = "fixed";
+    }
+
+});
+    </script>
 </body>
 </html>
