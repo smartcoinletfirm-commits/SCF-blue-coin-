@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCF Entry</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      padding: 20px;
+    }
+
+    .box {
+      width: 100%;
+      max-width: 400px;
+      background: #1d1d1d;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: #aaa;
+      margin-bottom: 25px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background: #292929;
+      color: white;
+      margin-bottom: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: white;
+      color: #111;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .error {
+      color: #ff7777;
+      margin-top: 15px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h1>SCF</h1>
+    <p>Private Entry</p>
+
+    <input
+      type="password"
+      id="entry"
+      placeholder="Enter access phrase"
+    >
+
+    <button onclick="enterConsole()">
+      Enter
+    </button>
+
+    <div id="error" class="error">
+      Incorrect entry phrase.
+    </div>
+  </div>
+
+  <script>
+    function enterConsole() {
+      const phrase = document.getElementById("entry").value;
+
+      if (phrase === "I love working with passion") {
+        window.location.href = "scf-console.html";
+      } else {
+        document.getElementById("error").style.display = "block";
+      }
+    }
+
+    document.getElementById("entry").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        enterConsole();
+      }
+    });
+  </script>
+
+</body>
+</html>
