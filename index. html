@@ -3,110 +3,103 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Coinlet Firm</title>
+
+<title>Smart Coinlet Firm | SCF</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    min-height: 100vh;
-    color: white;
-    background:
-        linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
-        url("https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1600&q=80")
-        center/cover fixed;
+body{
+    font-family:Arial, sans-serif;
+    background:#07140d;
+    color:white;
+    min-height:100vh;
 }
 
-header {
-    padding: 25px 15px;
-    text-align: center;
-    background: rgba(0,0,0,.55);
+header{
+    background:#0d2417;
+    padding:25px 15px;
+    text-align:center;
+    border-bottom:1px solid #1d5c38;
 }
 
-header h1 {
-    font-size: 30px;
+header h1{
+    font-size:30px;
 }
 
-header p {
-    margin-top: 8px;
+header p{
+    margin-top:8px;
+    color:#b8d8c3;
 }
 
-.container {
-    width: 92%;
-    max-width: 900px;
-    margin: 35px auto;
+.hero{
+    text-align:center;
+    padding:80px 20px;
+    background:linear-gradient(135deg,#07140d,#123d25);
 }
 
-.card {
-    background: rgba(0,0,0,.65);
-    padding: 25px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.4);
+.hero h2{
+    font-size:34px;
+    margin-bottom:15px;
 }
 
-.card h2 {
-    margin-bottom: 12px;
+.hero p{
+    color:#c8ddd0;
+    margin-bottom:25px;
 }
 
-.announcement {
-    border-left: 4px solid white;
-    padding: 12px;
-    margin-top: 10px;
-    background: rgba(255,255,255,.08);
+button{
+    background:#19a463;
+    color:white;
+    border:none;
+    padding:13px 22px;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-button {
-    padding: 12px 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 10px;
+button:hover{
+    background:#147e4d;
 }
 
-input,
-textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 7px;
-    border: none;
+.container{
+    width:92%;
+    max-width:850px;
+    margin:30px auto;
 }
 
-textarea {
-    min-height: 120px;
-    resize: vertical;
+.card{
+    background:#0d2417;
+    padding:25px;
+    border-radius:14px;
+    margin-bottom:20px;
+    border:1px solid #1d5c38;
 }
 
-.console {
-    display: none;
+.card h2{
+    margin-bottom:12px;
 }
 
-.hero {
-    text-align: center;
-    padding: 70px 20px;
+.announcement{
+    background:#123521;
+    border-left:4px solid #19a463;
+    padding:14px;
+    margin-top:10px;
+    border-radius:5px;
 }
 
-.hero h2 {
-    font-size: 32px;
-    margin-bottom: 15px;
+footer{
+    text-align:center;
+    padding:25px;
+    color:#9fb8a8;
+    background:#061009;
+    margin-top:40px;
 }
 
-.hero p {
-    margin-bottom: 20px;
-}
-
-footer {
-    text-align: center;
-    padding: 25px;
-    background: rgba(0,0,0,.6);
-}
 </style>
 </head>
 
@@ -117,167 +110,59 @@ footer {
     <p>Smart ideas. Smart opportunities.</p>
 </header>
 
-<main>
+<section class="hero">
 
-    <section class="hero">
-        <h2>Welcome to Smart Coinlet Firm</h2>
-        <p>Explore our services, information and opportunities.</p>
-        <button onclick="showMessage()">Get Started</button>
-    </section>
+    <h2>Welcome to Smart Coinlet Firm</h2>
 
-    <div class="container">
+    <p>
+        Building opportunities for young people across Africa.
+    </p>
 
-        <div class="card">
-            <h2>About SCF</h2>
-            <p>
-                Welcome to Smart Coinlet Firm. This platform provides
-                information, updates and announcements from SCF.
-            </p>
-        </div>
+    <button onclick="getStarted()">
+        Get Started
+    </button>
 
-        <div class="card">
-            <h2>Announcements</h2>
+</section>
 
-            <div id="announcements">
-                <div class="announcement">
-                    No new announcements at the moment.
-                </div>
-            </div>
-        </div>
+<div class="container">
 
-        <!-- SCF CONSOLE -->
-        <div id="console" class="card console">
+    <div class="card">
 
-            <h2>SCF Console</h2>
+        <h2>About SCF</h2>
 
-            <h3>Add Announcement</h3>
+        <p>
+            Smart Coinlet Firm is an online platform designed
+            to provide opportunities, information and activities
+            for our growing community.
+        </p>
 
-            <textarea
-                id="announcementText"
-                placeholder="Write your announcement here..."
-            ></textarea>
+    </div>
 
-            <button onclick="addAnnouncement()">
-                Publish Announcement
-            </button>
+    <div class="card">
 
-            <br><br>
+        <h2>Announcements</h2>
 
-            <h3>Change Background Image</h3>
-
-            <input
-                id="backgroundUrl"
-                type="url"
-                placeholder="Paste image URL here"
-            >
-
-            <button onclick="changeBackground()">
-                Change Background
-            </button>
-
-            <br><br>
-
-            <button onclick="logout()">
-                Exit SCF Console
-            </button>
-
+        <div class="announcement">
+            Welcome to Smart Coinlet Firm.
         </div>
 
     </div>
 
-</main>
+</div>
 
 <footer>
+
     <p>© 2026 Smart Coinlet Firm</p>
+
 </footer>
 
 <script>
 
-function showMessage() {
+function getStarted(){
+
     alert("Welcome to Smart Coinlet Firm!");
+
 }
-
-function loadAnnouncements() {
-
-    const saved =
-        localStorage.getItem("scfAnnouncements");
-
-    if (saved) {
-        document.getElementById("announcements").innerHTML = saved;
-    }
-}
-
-function addAnnouncement() {
-
-    const text =
-        document.getElementById("announcementText").value.trim();
-
-    if (text === "") {
-        alert("Please write an announcement first.");
-        return;
-    }
-
-    const box =
-        document.createElement("div");
-
-    box.className = "announcement";
-    box.textContent = text;
-
-    document
-        .getElementById("announcements")
-        .prepend(box);
-
-    localStorage.setItem(
-        "scfAnnouncements",
-        document.getElementById("announcements").innerHTML
-    );
-
-    document.getElementById("announcementText").value = "";
-
-    alert("Announcement published.");
-}
-
-function changeBackground() {
-
-    const url =
-        document.getElementById("backgroundUrl").value.trim();
-
-    if (url === "") {
-        alert("Please enter an image URL.");
-        return;
-    }
-
-    document.body.style.background =
-        'linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)), url("' +
-        url +
-        '") center/cover fixed';
-
-    localStorage.setItem("scfBackground", url);
-
-    alert("Background changed.");
-}
-
-function loadBackground() {
-
-    const saved =
-        localStorage.getItem("scfBackground");
-
-    if (saved) {
-
-        document.body.style.background =
-            'linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)), url("' +
-            saved +
-            '") center/cover fixed';
-    }
-}
-
-function logout() {
-
-    document.getElementById("console").style.display = "none";
-}
-
-loadAnnouncements();
-loadBackground();
 
 </script>
 
